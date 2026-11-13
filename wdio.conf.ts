@@ -47,20 +47,17 @@ export const config: Options.Testrunner = {
    * On every failed test, capture evidence automatically:
    * a screenshot and the device log, ready to attach to a defect.
    */
-  afterTest: async function (test, _context, { error }) {
-    if (!error) return;
-    const safeName = test.title.replace(/[^a-z0-9]+/gi, '_').slice(0, 60);
-    const dir = path.join(env.artifactsDir, 'failures');
-    await mkdir(dir, { recursive: true });
+ afterTest: async function (test, _context, { error }) {
+  const safeName = test.title.replace(/[^a-z0-9]+/gi, '_').slice(0, 60);
+  const status = error ? 'FAILED' : 'passed';
+  const dir = path.join(env.artifactsDir, 'screenshots');
+  await mkdir(dir, { recursive: true });
+  try {
+    await browser.saveScreenshot(path.join(dir, `${status}_${safeName}.png`));
+  } catch { /* session may be gone */ }
+  if (error) {
     try {
-      await browser.saveScreenshot(path.join(dir, `${safeName}.png`));
-    } catch {
-      /* session may be gone; keep going */
-    }
-    try {
-      await Adb.fromEnv().saveLogcat(path.join(dir, `${safeName}.logcat.txt`));
-    } catch {
-      /* adb unavailable */
-    }
-  },
-};
+      await Adb.fromEnv().saveLogcat(path.join(env.artifactsDir, 'failures', `${safeName}.logcat.txt`));
+    } catch { /* adb unavailable */ }
+  }
+},
