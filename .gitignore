@@ -1,0 +1,8 @@
+node_modules/
+artifacts/
+reports/
+errorShots/
+logs/
+.env
+*.apk
+*.aab
