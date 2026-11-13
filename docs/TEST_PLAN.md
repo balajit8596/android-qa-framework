@@ -37,6 +37,7 @@ Verify that the Android application and its backend services are functional, sta
 | P2 | Older low-memory phone | Current - 3 | Performance and memory |
 | P2 | Tablet | Current | Layout |
 | P3 | Emulator (API 29 to latest) | Various | Breadth, quick checks |
+| P3 | Emulated Pixel 7, Galaxy S9+, Galaxy Tab S4 (browser) | Android Chrome profile | Mobile web: layout, touch, network, basic security. Runs anywhere, no hardware |
 
 The matrix should be updated from real usage analytics.
 

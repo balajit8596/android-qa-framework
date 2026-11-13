@@ -21,6 +21,27 @@ jobs:
       - run: npm run test:unit
       - run: npm run test:api
 
+  mobile-web:
+    name: Mobile web tests (emulated Android devices)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:mobile-web
+      - name: Upload report and evidence
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-web-report
+          path: |
+            reports/
+            artifacts/
+          retention-days: 14
+
   android-emulator:
     name: Android emulator tests (manual run)
     if: github.event_name == 'workflow_dispatch'

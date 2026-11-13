@@ -14,6 +14,8 @@
 - [ ] Behaviour checked on a rooted or modified device if required
 - [ ] Release build is not debuggable and not flagged for backup if sensitive
 
+Automated for the web app on emulated Android devices: HTTPS (TC-067), masked password (TC-068), no credentials in the URL (TC-069), no mixed content (TC-070), script injection (TC-071), response headers (TC-072).
+
 Reference: OWASP Mobile Top 10. Useful tools: Burp Suite or OWASP ZAP (traffic), MobSF (static APK analysis).
 
 ## Networking

@@ -24,6 +24,19 @@ Automation coverage is mapped to the spec that implements each case. Cases marke
 | TC-042 | API | POST create | 201 and body echoed | API | `posts.test.ts` |
 | TC-043 | API | Unknown resource | 404 | API | `posts.test.ts` |
 | TC-044 | API | Response time | Under 2 seconds | API | `posts.test.ts` |
+| TC-060 | Compatibility | Emulated device reports Android and touch | UA contains Android, touch points > 0 | Smoke | `device-compat.spec.ts` |
+| TC-061 | Compatibility | Login and product list render per device | Products page loads with items | Smoke | `device-compat.spec.ts` |
+| TC-062 | Touch | Tap Add to cart | Cart badge shows 1 | Smoke | `device-compat.spec.ts` |
+| TC-063 | Orientation | Rotate the device | Layout still usable in both orientations | Functional | `device-compat.spec.ts` |
+| TC-064 | Network | Go offline, then back online | Load fails offline, recovers online | Functional | `mobile-web/network.spec.ts` |
+| TC-065 | Network | Slow 3G connection | Login page loads, load time recorded | Functional | `mobile-web/network.spec.ts` |
+| TC-066 | Network | Image requests blocked | App still works | Functional | `mobile-web/network.spec.ts` |
+| TC-067 | Security | HTTPS only | URL starts with https | Security | `mobile-web/security.spec.ts` |
+| TC-068 | Security | Password field masked | Input type is password | Security | `mobile-web/security.spec.ts` |
+| TC-069 | Security | No credentials in URL | URL has no username or password | Security | `mobile-web/security.spec.ts` |
+| TC-070 | Security | No mixed content | No plain-HTTP requests | Security | `mobile-web/security.spec.ts` |
+| TC-071 | Security | Script injection in input | No script runs, error shown | Security | `mobile-web/security.spec.ts` |
+| TC-072 | Security | Security response headers | Missing headers reported (informational) | Security | `mobile-web/security.spec.ts` |
 | TC-050 | Install | Fresh install and first launch | No crash, onboarding shown | Manual | none |
 | TC-051 | Upgrade | Upgrade from previous version | Data and settings preserved | Manual | none |
 | TC-052 | Interrupt | Incoming call during use | App pauses and resumes correctly | Manual | none |
